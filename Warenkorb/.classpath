@@ -6,7 +6,8 @@
 	<classpathentry kind="lib" path="/MVCWarenkorb/AbsoluteLayout.jar"/>
 	<classpathentry kind="lib" path="/home/corinna/Downloads/javamail1_4_5.zip"/>
 	<classpathentry kind="lib" path="/home/corinna/Downloads/javamail-1.4.5/mail.jar"/>
-	<classpathentry kind="lib" path="/home/corinna/Downloads/Java_Ware/jdbc-api-1.4.jar"/>
-	<classpathentry kind="lib" path="/home/corinna/Downloads/Java_Ware/sqlite-jdbc-3.23.1.jar"/>
+	<classpathentry kind="lib" path="/home/corinna/git/warenkorb/Warenkorb/AbsoluteLayout.jar"/>
+	<classpathentry kind="lib" path="/home/corinna/git/warenkorb/Warenkorb/sqlite-jdbc-3.23.1.jar"/>
+	<classpathentry kind="lib" path="/home/corinna/git/warenkorb/Warenkorb/jdbc-api-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
