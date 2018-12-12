@@ -6,7 +6,7 @@ package project;
  */
 public class ProductList {
 	
-	
+	/** create new product */
     private String brand;
     private String model;
     private int price;
@@ -22,7 +22,10 @@ public class ProductList {
         this.description = description;
         this.mimage = image;
     }
-
+    
+    /**
+     * getter and setter methods for features
+     */
     public String getBrand() {
         return brand;
     }

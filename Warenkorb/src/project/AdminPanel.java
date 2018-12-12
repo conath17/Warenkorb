@@ -24,10 +24,12 @@ public class AdminPanel extends JFrame {
     
 	/**
      * Creates new form AdminPanel
+     * only for administrative/testing purpose!
      */
 	private static final long serialVersionUID = 1L;
     boolean imageChooser = false;
     String path;
+    
     
     public AdminPanel() {
         initComponents();
@@ -36,9 +38,8 @@ public class AdminPanel extends JFrame {
     }
 
     /**
-     * This method is called from within the constructor to initialize the form.
+     * This method is called from within the constructor to initialise the form.
      */
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
@@ -139,8 +140,8 @@ public class AdminPanel extends JFrame {
         updateButton.setBackground(new java.awt.Color(153, 204, 255));
         updateButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
-        updateButton.setText("New Entry");
-        updateButton.setToolTipText("Enter new product");
+        updateButton.setText("Neuer Eintrag");
+        updateButton.setToolTipText("Neues Produkt");
         updateButton.setBorder(null);
         updateButton.setBorderPainted(false);
         updateButton.setContentAreaFilled(false);
@@ -172,8 +173,8 @@ public class AdminPanel extends JFrame {
         checkStockButton.setBackground(new java.awt.Color(153, 204, 255));
         checkStockButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         checkStockButton.setForeground(new java.awt.Color(255, 255, 255));
-        checkStockButton.setText("Check Stock");
-        checkStockButton.setToolTipText("Stock status");
+        checkStockButton.setText("Prüfe Lager");
+        checkStockButton.setToolTipText("Lager Status");
         checkStockButton.setBorder(null);
         checkStockButton.setBorderPainted(false);
         checkStockButton.setContentAreaFilled(false);
@@ -205,8 +206,7 @@ public class AdminPanel extends JFrame {
         billingButton.setBackground(new java.awt.Color(153, 204, 255));
         billingButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         billingButton.setForeground(new java.awt.Color(255, 255, 255));
-        billingButton.setText("Billing");
-        billingButton.setToolTipText("Total billings ");
+        billingButton.setText("Rechnung");
         billingButton.setBorder(null);
         billingButton.setBorderPainted(false);
         billingButton.setContentAreaFilled(false);
@@ -270,7 +270,7 @@ public class AdminPanel extends JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20));
         jLabel3.setForeground(new java.awt.Color(0, 0, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Product Details");
+        jLabel3.setText("Produkt Details");
         updatePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 24, 1200, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 255));
@@ -282,7 +282,7 @@ public class AdminPanel extends JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel4.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel4.setText("Brand:");
+        jLabel4.setText("Name:");
         updatePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 104, -1));
 
         mBrand.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -307,7 +307,7 @@ public class AdminPanel extends JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel5.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel5.setText("Model:");
+        jLabel5.setText("Modell:");
         updatePanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 104, -1));
 
         mQty.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -322,13 +322,13 @@ public class AdminPanel extends JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel6.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel6.setText("Category:");
+        jLabel6.setText("Kategory:");
         updatePanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 104, -1));
 
         mPhotoPath.setEditable(false);
         mPhotoPath.setFont(new java.awt.Font("Tahoma", 0, 14));
         mPhotoPath.setForeground(new java.awt.Color(0, 0, 255));
-        mPhotoPath.setText("Choose photo:");
+        mPhotoPath.setText("Wähle Foto:");
         mPhotoPath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         mPhotoPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,17 +339,17 @@ public class AdminPanel extends JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel7.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel7.setText("Price:");
+        jLabel7.setText("Preis:");
         updatePanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 104, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel8.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel8.setText("Quantity:");
+        jLabel8.setText("Anzahl:");
         updatePanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 104, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel9.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel9.setText("Product Description:");
+        jLabel9.setText("Produkt Beschreibung:");
         updatePanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 140, -1));
 
         mCat.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -417,7 +417,7 @@ public class AdminPanel extends JFrame {
 
             },
             new String [] {
-                "Brand Name", "Model", "Stock", "Category"
+                "Name", "Modell", "Lager", "Kategory"
             }
         ));
         checkStockTable.setEnabled(false);
@@ -426,11 +426,11 @@ public class AdminPanel extends JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel10.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel10.setText("Enter model:");
+        jLabel10.setText("Modell eingeben:");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel11.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel11.setText("Add to Stock:");
+        jLabel11.setText("Lager hinzufügen:");
 
         stockUpdateModel.setFont(new java.awt.Font("Tahoma", 0, 18));
         stockUpdateModel.addActionListener(new java.awt.event.ActionListener() {
@@ -446,7 +446,7 @@ public class AdminPanel extends JFrame {
         updateStockButton.setFont(new java.awt.Font("Tahoma", 0, 18));
         updateStockButton.setForeground(new java.awt.Color(255, 255, 255));
         updateStockButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Up_24px.png")));
-        updateStockButton.setText("Update Stock");
+        updateStockButton.setText("Update Lager");
         updateStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateStockButtonActionPerformed(evt);
@@ -457,7 +457,7 @@ public class AdminPanel extends JFrame {
         delEntry.setFont(new java.awt.Font("Tahoma", 0, 18));
         delEntry.setForeground(new java.awt.Color(255, 255, 255));
         delEntry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Delete_24px.png")));
-        delEntry.setText("Delete Entry");
+        delEntry.setText("Eintrag löschen");
         delEntry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delEntryActionPerformed(evt);
@@ -466,11 +466,11 @@ public class AdminPanel extends JFrame {
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel12.setText("Delete Entry:");
+        jLabel12.setText("Eintrag löschen:");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel13.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel13.setText("Enter model:");
+        jLabel13.setText("Modell eintragen:");
 
         delEntryModel.setFont(new java.awt.Font("Tahoma", 0, 18));
         delEntryModel.addActionListener(new java.awt.event.ActionListener() {
@@ -484,7 +484,7 @@ public class AdminPanel extends JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel14.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel14.setText("Set Quantity:");
+        jLabel14.setText("Anzahl eingeben:");
 
         stockUpdateSetQty.setFont(new java.awt.Font("Tahoma", 0, 18));
         stockUpdateSetQty.addActionListener(new java.awt.event.ActionListener() {
@@ -564,7 +564,7 @@ public class AdminPanel extends JFrame {
 
             },
             new String [] {
-                "Serial", "Username", "Total Bill", "Time & Date"
+                "Nr.", "Username", "Rechnung", "Datum/Uhrzeit"
             }
         ));
         jScrollPane2.setViewportView(billingTable);
@@ -573,7 +573,7 @@ public class AdminPanel extends JFrame {
         delEntry1.setFont(new java.awt.Font("Tahoma", 0, 18));
         delEntry1.setForeground(new java.awt.Color(255, 255, 255));
         delEntry1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Delete_24px.png")));
-        delEntry1.setText("Delete Log");
+        delEntry1.setText("Logfile löschen");
         delEntry1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delEntry1ActionPerformed(evt);
@@ -678,7 +678,7 @@ public class AdminPanel extends JFrame {
             data[0] = list.get(i).getBrand();
             data[1] = list.get(i).getModel();
             data[2] = list.get(i).getQty();
-            data[3] = "Toys";
+            data[3] = "Spielzeug";
             
             model.addRow(data);
         }

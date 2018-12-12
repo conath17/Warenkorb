@@ -21,9 +21,8 @@ public class NotificationForm extends JFrame {
     }
 
     /**
-     * This method is called from within the constructor to initialize the form.
+     * This method is called from within the constructor to initialise the form.
      */
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();

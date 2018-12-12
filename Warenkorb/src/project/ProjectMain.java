@@ -17,20 +17,27 @@ import javax.swing.table.TableModel;
  *
  * @author corinna
  */
-public class ProjectMain extends javax.swing.JFrame {
+public class ProjectMain extends JFrame {
 
-    
+	/**
+     * static variables
+     */
 	private static final long serialVersionUID = 1L;
 	static Object[] data = new Object[4];   
     static int total = 0;
     static String tot = "";
     static boolean signInStatus = false;
     static int wrongPass = 0;
+    static String logger;
     
     public ProjectMain() {
-        initComponents();
         
-        //Adding products to homeGUI
+    	/**
+         * initialise main frame
+         */
+    	initComponents();
+        
+        //Get list of products
         ArrayList<ProductList> list = KidsDB.TableGenerator();
         Object rowData[] = new Object[6];
         
@@ -46,7 +53,7 @@ public class ProjectMain extends javax.swing.JFrame {
         model.setRowCount(0);
         
         for(int i=0; i<list.size(); i++){
-        	// 6 columns in table on home
+        	// 6 columns of product table
         	rowData[0] = list.get(i).getBrand();
             rowData[1] = list.get(i).getModel();
             rowData[2] = list.get(i).getPrice();
@@ -56,13 +63,11 @@ public class ProjectMain extends javax.swing.JFrame {
             ImageIcon ii = new ImageIcon(getClass().getResource("/products/kids/"+temp));
             Image resizedImage = ii.getImage();
             ii = new ImageIcon(resizedImage.getScaledInstance(160, 160, Image.SCALE_SMOOTH));
-            
             rowData[5] = ii;
             model.addRow(rowData);
             homeTable.setRowHeight(150);
             homeTable.getColumnModel().getColumn(5).setPreferredWidth(150);
         }
-        
         list.clear();
     }
     
@@ -70,8 +75,6 @@ public class ProjectMain extends javax.swing.JFrame {
     /**
      * This method is called from within the constructor to initialize the form.
      */
-    //@SuppressWarnings("unchecked")
-    
     private void initComponents() {
 
         BackgroundPanel = new javax.swing.JPanel();
@@ -155,11 +158,11 @@ public class ProjectMain extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        
+        //separator
         jSeparator5.setForeground(new java.awt.Color(0, 0, 255));
         jSeparator5.setFont(new java.awt.Font("Tahoma", 1, 11));
         jSeparator5.setOpaque(true);
-        //Textfeld zum Suchen
+        //search textfield
         searchBar.setBackground(new java.awt.Color(153, 204, 255));
         searchBar.setFont(new java.awt.Font("Tahoma", 0, 14));
         searchBar.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,7 +177,7 @@ public class ProjectMain extends javax.swing.JFrame {
                 searchBarActionPerformed(evt);
             }
         });
-        //button fuer Suche
+        //search button
         searchButton.setBackground(new java.awt.Color(51, 153, 255));
         searchButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         searchButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,11 +209,11 @@ public class ProjectMain extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
-
+        //search label
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Suche");
-        //panel2 enthaelt Shopname und Suche
+        //panel2:  shopname and search
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -245,11 +248,11 @@ public class ProjectMain extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        //backgroundpanel enthaelt 3 sep. panels
+        //backgroundpanel: 3 separate panels added
         BackgroundPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 60));
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
-        //button um Spielzeug-Liste anzuzeigen
+        //button: show product list
         newlyAdded.setBackground(new java.awt.Color(153, 204, 255));
         newlyAdded.setFont(new java.awt.Font("Tahoma", 0, 20));
         newlyAdded.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,7 +285,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
 
-        //button zum einloggen, registrieren und Infos anzeigen (user-button)
+        //button: sign in, sign up, show account info
         accountButton.setBackground(new java.awt.Color(153, 204, 255));
         accountButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         accountButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -314,7 +317,7 @@ public class ProjectMain extends javax.swing.JFrame {
                 accountButtonActionPerformed(evt);
             }
         });
-        //zeige Einkaufsliste
+        //button: show cart
         cartButton.setBackground(new java.awt.Color(153, 204, 255));
         cartButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         cartButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -350,7 +353,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         
-        //panel3 enthaelt Warenkorb-Button, User-Button
+        //panel3: cart button, account button
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -374,9 +377,9 @@ public class ProjectMain extends javax.swing.JFrame {
         );
 
         BackgroundPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 1210, 50));
-
+        //parent panel
         cardParentPanel.setLayout(new java.awt.CardLayout());
-        //Liste mit Spielzeug
+        
         homeTable.setFont(new java.awt.Font("Tahoma", 0, 18));
         homeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -386,34 +389,31 @@ public class ProjectMain extends javax.swing.JFrame {
                 "Name", "Modell", "Preis", "Lager", "Beschreibung", "Photo"
             }
         ) {
-			private static final long serialVersionUID = 1L;
-			Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class,
-                java.lang.Integer.class, java.lang.String.class, javax.swing.Icon.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-
-            public Class getColumnClass(int columnIndex){
-                return types [columnIndex];
-            }
-
-        });
-        homeTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        homeTable.setSelectionBackground(new java.awt.Color(153, 204, 255));
-        homeTable.getTableHeader().setReorderingAllowed(false);
-        homeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+				private static final long serialVersionUID = 1L;
+					Class[] types = new Class[]{
+						java.lang.String.class, java.lang.String.class, java.lang.Integer.class,
+						java.lang.Integer.class, java.lang.String.class, javax.swing.Icon.class
+					};
+					boolean[] canEdit = new boolean [] {
+						false, false, false, false, false, false
+					};
+					public boolean isCellEditable(int rowIndex, int columnIndex) {
+						return canEdit [columnIndex];
+					}
+					public Class getColumnClass(int columnIndex){
+						return types [columnIndex];
+					}
+        	});
+        	homeTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        	homeTable.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        	homeTable.getTableHeader().setReorderingAllowed(false);
+        	homeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeTableMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(homeTable);
-
+        
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
@@ -426,7 +426,7 @@ public class ProjectMain extends javax.swing.JFrame {
         );
 
         cardParentPanel.add(homePanel);
-        //Such-Ergebnis-Liste
+        //search result list
         searchTable.setFont(new java.awt.Font("Tahoma", 0, 18));
         searchTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -453,8 +453,8 @@ public class ProjectMain extends javax.swing.JFrame {
             public Class getColumnClass(int columnIndex){
                 return types [columnIndex];
             }
-
         });
+        
         searchTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchTable.setSelectionBackground(new java.awt.Color(153, 204, 255));
         searchTable.getTableHeader().setReorderingAllowed(false);
@@ -464,7 +464,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(searchTable);
-
+        //search panel
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
@@ -475,11 +475,11 @@ public class ProjectMain extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
         );
-
+        
         cardParentPanel.add(searchPanel);
         
         jPanel8.setBackground(new java.awt.Color(230, 243, 255));
-
+        //Warenkorb
         cartItemTable.setFont(new java.awt.Font("Tahoma", 0, 14));
         cartItemTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -492,13 +492,13 @@ public class ProjectMain extends javax.swing.JFrame {
         cartItemTable.setEnabled(false);
         cartItemTable.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(cartItemTable);
-        //Warenkorb/Rechnung ansehen
+        //bill label
         billLabel.setFont(new java.awt.Font("Tahoma", 1, 18));
         billLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
+        //currency
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel3.setText("€");
-        //Kaufen bestaetigen
+        //confirm buy
         buyButton.setBackground(new java.awt.Color(0, 0, 255));
         buyButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         buyButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -510,10 +510,10 @@ public class ProjectMain extends javax.swing.JFrame {
                 buyButtonActionPerformed(evt);
             }
         });
-
+        //to pay
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel4.setText("Zu Zahlen:");
-
+        
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -567,35 +567,35 @@ public class ProjectMain extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(0, 40, Short.MAX_VALUE)))
         );
-
+        
         cardParentPanel.add(cartPanel, "card8");
-
+        //JFrame: sign up
         signUpPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 15));
         jLabel7.setForeground(new java.awt.Color(0, 0, 255));
         jLabel7.setText("Name");
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
-
+        
         jSeparator1.setBackground(new java.awt.Color(0, 0, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 255));
         jSeparator1.setFont(new java.awt.Font("Tahoma", 1, 11));
         jSeparator1.setOpaque(true);
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 310, 2));
-
+        
         signUpNameField.setFont(new java.awt.Font("Tahoma", 0, 18));
         signUpNameField.setForeground(new java.awt.Color(0, 0, 255));
         signUpNameField.setBorder(null);
         signUpNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signUpNameFieldActionPerformed(evt);
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		signUpNameFieldActionPerformed(evt);
             }
         });
         jPanel4.add(signUpNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 310, 50));
-
+        
         emptyField.setFont(new java.awt.Font("Tahoma", 0, 15));
         emptyField.setForeground(new java.awt.Color(255, 51, 0));
         jPanel4.add(emptyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 270, 30));
@@ -605,18 +605,18 @@ public class ProjectMain extends javax.swing.JFrame {
         jSeparator3.setFont(new java.awt.Font("Tahoma", 1, 11));
         jSeparator3.setOpaque(true);
         jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 310, 2));
-
+        
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 15));
         jLabel8.setForeground(new java.awt.Color(0, 0, 255));
         jLabel8.setText("Password");
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
-
+        
         jSeparator4.setBackground(new java.awt.Color(0, 0, 255));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 255));
         jSeparator4.setFont(new java.awt.Font("Tahoma", 1, 11));
         jSeparator4.setOpaque(true);
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 310, 2));
-
+        
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel9.setForeground(new java.awt.Color(0, 0, 255));
         jLabel9.setText("Schon registriert?");
@@ -656,11 +656,10 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(signInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 502, 90, 30));
-
+        //password
         showPassword.setBackground(new java.awt.Color(255, 255, 255));
         showPassword.setFont(new java.awt.Font("Tahoma", 0, 18));
         showPassword.setForeground(new java.awt.Color(0, 0, 255));
-        showPassword.setToolTipText("Show/Hide Password");
         showPassword.setBorderPaintedFlat(true);
         showPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showPassword.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -670,7 +669,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 20, 20));
-
+        //sign up
         LogUpButton.setBackground(new java.awt.Color(0, 0, 255));
         LogUpButton.setFont(new java.awt.Font("Tahoma", 0, 20));
         LogUpButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -702,31 +701,31 @@ public class ProjectMain extends javax.swing.JFrame {
         usernameExists.setFont(new java.awt.Font("Tahoma", 0, 15));
         usernameExists.setForeground(new java.awt.Color(255, 51, 0));
         jPanel4.add(usernameExists, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 160, 30));
-
+        
         signUpPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 770, 590));
-
+        
         jPanel5.setBackground(new java.awt.Color(153, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        
         jLabel5.setFont(new java.awt.Font("Tahoma Light", 0, 30));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Registrieren!");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 149, -1, 168));
-
+        
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rsz_accounts_main.png")));
         jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, 168));
-
+        
         signUpPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 590));
-
-        //cardParentPanel.add(signUpPanel, "card6");
-
+        
+        cardParentPanel.add(signUpPanel, "card6");
+        //JFrame: sign in
         signInPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        
         jPanel7.setBackground(new java.awt.Color(153, 204, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-
+        
         jLabel10.setFont(new java.awt.Font("Tahoma Light", 0, 30));
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -826,7 +825,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         jPanel6.add(LogInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 180, 50));//410 330 130 50
-        //Registrieren Button
+        //sign up button
         signUpButton.setBackground(new java.awt.Color(255, 255, 255));
         signUpButton.setFont(new java.awt.Font("Tahoma", 1, 15));
         signUpButton.setForeground(new java.awt.Color(153, 204, 255));
@@ -856,7 +855,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         jPanel6.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 502, 130, 30));
-        //ticbox um Passwort anzuzeigen/verbergen
+        //checkbox: show/hide password
         showPassword1.setBackground(new java.awt.Color(255, 255, 255));
         showPassword1.setFont(new java.awt.Font("Tahoma", 0, 18));
         showPassword1.setForeground(new java.awt.Color(0, 0, 255));
@@ -870,7 +869,7 @@ public class ProjectMain extends javax.swing.JFrame {
             }
         });
         jPanel6.add(showPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 20, 20));
-        //Warnung fuer falsches Passwort
+        //warning: wrong password
         warningLabel.setFont(new java.awt.Font("Tahoma", 0, 18));
         warningLabel.setForeground(new java.awt.Color(255, 0, 0));
         warningLabel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -909,12 +908,13 @@ public class ProjectMain extends javax.swing.JFrame {
     }
 
     private void newlyAddedActionPerformed(java.awt.event.ActionEvent evt) {
-        cardParentPanel.removeAll();
+        //update parent panel
+    	cardParentPanel.removeAll();
         cardParentPanel.add(homePanel);
         cardParentPanel.repaint();
         cardParentPanel.revalidate();
         
-        //Adding last three entries from every categories in home
+        //adding products
         ArrayList<ProductList> list = KidsDB.TableGenerator();
         
         Object rowData[] = new Object[6];
@@ -941,7 +941,6 @@ public class ProjectMain extends javax.swing.JFrame {
             ImageIcon ii = new ImageIcon(getClass().getResource("/products/kids/"+temp));
             Image resizedImage = ii.getImage();
             ii = new ImageIcon(resizedImage.getScaledInstance(160, 160, Image.SCALE_SMOOTH));
-            
             rowData[5] = ii;
             model.addRow(rowData);
             homeTable.setRowHeight(150);
@@ -949,7 +948,7 @@ public class ProjectMain extends javax.swing.JFrame {
         }   
     }
     
-    //definiere Button-Actions
+    //button actions
     private void newlyAddedMouseReleased(java.awt.event.MouseEvent evt) {
         newlyAdded.setBackground(new Color(153, 204, 255));
     }
@@ -969,30 +968,28 @@ public class ProjectMain extends javax.swing.JFrame {
     private void newlyAddedMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
     }
-
     
-
     private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void accountButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseEntered
+    private void accountButtonMouseEntered(java.awt.event.MouseEvent evt) {
         accountButton.setBackground(new Color(51, 153, 255));
     }
 
-    private void accountButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseExited
+    private void accountButtonMouseExited(java.awt.event.MouseEvent evt) {
         accountButton.setBackground(new Color(153, 204, 255));
     }
 
-    private void accountButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMousePressed
+    private void accountButtonMousePressed(java.awt.event.MouseEvent evt) {
         accountButton.setBackground(new Color(0, 0, 255));
     }
 
-    private void accountButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseReleased
+    private void accountButtonMouseReleased(java.awt.event.MouseEvent evt) {
         accountButton.setBackground(new Color(153, 204, 255));
     }
-
-    private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
+    //show account info or show log in panel
+    private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {
         
         if(signInStatus==false){
             cardParentPanel.removeAll();
@@ -1008,19 +1005,20 @@ public class ProjectMain extends javax.swing.JFrame {
     }
 
     private void cartButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        cardParentPanel.removeAll();
+        //show cart panel (update parent panel)
+    	cardParentPanel.removeAll();
         cardParentPanel.add(cartPanel);
         cardParentPanel.repaint();
         cardParentPanel.revalidate();
         
-         DefaultTableModel model =  (DefaultTableModel) cartItemTable.getModel();
-         model.setRowCount(0);
-         total = 0;
-         //Variable fuer Gesamt-Preis, wird in ProductInformation geupdated
-         tot = "";
+        DefaultTableModel model =  (DefaultTableModel) cartItemTable.getModel();
+        model.setRowCount(0);
+        total = 0;
+        //total price, updated in ProductInformation
+        tot = "";
          
-         for(int i=0; i<ProductInformation.cartItem.size(); i++){
-            data[0] = ProductInformation.cartItem.get(i).getBrand();
+        for(int i=0; i<ProductInformation.cartItem.size(); i++){
+        	data[0] = ProductInformation.cartItem.get(i).getBrand();
             data[1] = ProductInformation.cartItem.get(i).getModel();
             data[2] = ProductInformation.cartItem.get(i).getPrice();
             data[3] = ProductInformation.cartItem.get(i).getQty();
@@ -1028,8 +1026,8 @@ public class ProjectMain extends javax.swing.JFrame {
             model.addRow(data);
             cartItemTable.setRowHeight(20);
             total+=Integer.parseInt(cartItemTable.getValueAt(i, 2)+"");
-         }
-         billLabel.setText(String.valueOf(total));
+        }
+        billLabel.setText(String.valueOf(total));
     }
 
     private void cartButtonMouseClicked(java.awt.event.MouseEvent evt) {
@@ -1052,16 +1050,13 @@ public class ProjectMain extends javax.swing.JFrame {
         cartButton.setBackground(new Color(153, 204, 255));
     }
     
-    
     private void signInUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
     
-    static String logger;
-    
-    //@SuppressWarnings("deprecation")
+    @SuppressWarnings("deprecation")
 	private void LogInButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+		//admin panel
         JFrame adminPanel = new AdminPanel();
         if(signInUsernameField.getText().equals("admin") && signInPasswordField.getText().equals("admin")){
             signInStatus = true;
@@ -1077,7 +1072,7 @@ public class ProjectMain extends javax.swing.JFrame {
             wrongPass = 0;
         }
         else{
-            //Passwort abfrage
+            //log in as user
 			boolean flag = DbConnector.signer(signInUsernameField.getText(), signInPasswordField.getText());
             
             if(flag){
@@ -1099,7 +1094,6 @@ public class ProjectMain extends javax.swing.JFrame {
                 signInPasswordField.setText("");
             } 
         }
-        
     }
 
     private void signUpButtonMouseEntered(java.awt.event.MouseEvent evt) {
@@ -1119,14 +1113,15 @@ public class ProjectMain extends javax.swing.JFrame {
     }
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        cardParentPanel.removeAll();
+        //show sign up panel 
+    	cardParentPanel.removeAll();
         cardParentPanel.add(signUpPanel);
         cardParentPanel.repaint();
         cardParentPanel.revalidate();
     }
 
     private void showPassword1ActionPerformed(java.awt.event.ActionEvent evt) {
-    	
+    	//show/hide password action
         if(showPassword1.isSelected()){
            signInPasswordField.setEchoChar((char)0);
         }
@@ -1148,7 +1143,9 @@ public class ProjectMain extends javax.swing.JFrame {
 
     @SuppressWarnings("deprecation")
 	private void LogUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogUpButtonActionPerformed
-        
+        /** warning: missing entriesLogUpButtonActionPerformed
+         * or connect to database to get username/password
+         */
         if(signUpUsernameField.getText().equals("")||signUpNameField.getText().equals("")
            ||signUpPasswordField.getText().equals(""))
             emptyField.setText("*Notwendige Eingaben fehlen!");
@@ -1171,7 +1168,8 @@ public class ProjectMain extends javax.swing.JFrame {
     }
 
     private void showPasswordActionPerformed(java.awt.event.ActionEvent evt) {
-        if(showPassword.isSelected()){
+        //show/hide password
+    	if(showPassword.isSelected()){
             signUpPasswordField.setEchoChar((char)0);
         }
         else
@@ -1179,7 +1177,8 @@ public class ProjectMain extends javax.swing.JFrame {
     }
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        cardParentPanel.removeAll();
+        //show sign in panel
+    	cardParentPanel.removeAll();
         cardParentPanel.add(signInPanel);
         cardParentPanel.repaint();
         cardParentPanel.revalidate();
@@ -1216,6 +1215,7 @@ public class ProjectMain extends javax.swing.JFrame {
         	warningLabel.setText("Bitte einloggen.");
         }
         else{
+        	//JFrame: delivery adress
             Date date = new Date();
             JFrame da = new DeliveryAddress(logger, Integer.parseInt(billLabel.getText()), date.toString());
             da.setVisible(true);
@@ -1226,6 +1226,7 @@ public class ProjectMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
     
+    //get product information for selected product
     ProductInformation pi = new ProductInformation();
     
     private void homeTableMouseClicked(java.awt.event.MouseEvent evt) {
@@ -1242,7 +1243,7 @@ public class ProjectMain extends javax.swing.JFrame {
         String stock = tm.getValueAt(selectedRow, 3).toString();
         String feature = tm.getValueAt(selectedRow, 4).toString();
         ImageIcon img = (ImageIcon) tm.getValueAt(selectedRow, 5);
-        //zeige Produktinformationen nachdem ein Teil ausgewaehlt wurde
+        //update product information
         pi.productInfoBrandName.setText(brand);
         pi.productInfoModel.setText(model);
         pi.productInfoPrice.setText(price);
@@ -1274,7 +1275,8 @@ public class ProjectMain extends javax.swing.JFrame {
     private void searchButtonMouseReleased(java.awt.event.MouseEvent evt) {
         searchButton.setBackground(new Color(153, 204, 255));
     }
-
+    
+    //search list for search word/update parent panel/show search result panel
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	
         Search.kids=0;
@@ -1287,7 +1289,7 @@ public class ProjectMain extends javax.swing.JFrame {
         else if(Search.kids==0)
             JOptionPane.showMessageDialog(null, "Ooops! Produkt existiert nicht!");
         else{
-            cardParentPanel.removeAll();
+        	cardParentPanel.removeAll();
             cardParentPanel.add(searchPanel);
             cardParentPanel.repaint();
             cardParentPanel.revalidate();
@@ -1314,7 +1316,6 @@ public class ProjectMain extends javax.swing.JFrame {
                 ImageIcon ii = new ImageIcon(getClass().getResource("/products/kids/"+temp));
                 Image resizedImage = ii.getImage();
                 ii = new ImageIcon(resizedImage.getScaledInstance(160, 160, Image.SCALE_SMOOTH));
-
                 rowData[5] = ii;
                 model.addRow(rowData);
                 searchTable.setRowHeight(150);
@@ -1327,7 +1328,7 @@ public class ProjectMain extends javax.swing.JFrame {
         searchBar.setText("");
     }
     
-    
+    //update search panel
     private void searchTableMouseClicked(java.awt.event.MouseEvent evt) {
         
     	pi.setVisible(true);
@@ -1350,8 +1351,8 @@ public class ProjectMain extends javax.swing.JFrame {
         pi.productInfoFeature.setText(feature);
         pi.productPhoto.setIcon(img);
     }
-
     
+    // main method
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //desc=" Look and feel setting code (optional) "
@@ -1375,7 +1376,7 @@ public class ProjectMain extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ProjectMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        /* Create and display the form */
+        //create and display the form
         JFrame newMain = new ProjectMain();
         newMain.setTitle("Shopping");
         newMain.setVisible(true);

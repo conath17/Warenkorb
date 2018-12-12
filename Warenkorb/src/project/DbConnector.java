@@ -17,6 +17,7 @@ import javax.swing.JFrame;
  */
 public class DbConnector {
 
+	//connect to SQL database/add new user/get registered user
     public static int insertToUser(String username, String name, String password) {
         try {
         	
@@ -33,6 +34,9 @@ public class DbConnector {
             ps.setString(3, password);
             ps.executeUpdate();
             
+            //JOptionPane.showMessageDialog(null, "Signing up successful!");
+            JFrame notification = new NotificationForm();
+            
         } catch (SQLException e) {
             if(e.getErrorCode()==19) //Duplicate username
                 return 19;
@@ -45,6 +49,7 @@ public class DbConnector {
     
     public static boolean signer(String username, String pass){
         try {
+        	//already known user
         	System.out.println(username+"  user      pass  "+pass);
             Connection con = DriverManager.getConnection("jdbc:sqlite:DBs/bbs.db");
             String check = "SELECT username, password FROM userinfo WHERE username=? AND password=?";

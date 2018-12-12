@@ -19,10 +19,8 @@ public class ProductInformation extends JFrame {
 	static String rab2 = "Grau";//absolut rabatiertes Modell
 	
 	/**
-     * Creates new form ProductInformation
-     */
-    //static String categoryChooser="";
-    
+     * Creates new ProductInformation panel
+     */    
     public ProductInformation() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -98,31 +96,31 @@ public class ProductInformation extends JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 60));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
+        //product photo
         productPhoto.setBackground(new java.awt.Color(255, 255, 255));
         productPhoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productPhoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
-
+        //product name
         productInfoBrand.setFont(new java.awt.Font("Tahoma", 0, 14));
         productInfoBrand.setForeground(new java.awt.Color(0, 0, 255));
         productInfoBrand.setText("Name:");
-
+        //product price
         productInfoBrand1.setFont(new java.awt.Font("Tahoma", 0, 14));
         productInfoBrand1.setForeground(new java.awt.Color(0, 0, 255));
         productInfoBrand1.setText("Preis €:");
-
+        //qty in stock
         productInfoBrand2.setFont(new java.awt.Font("Tahoma", 0, 14));
         productInfoBrand2.setForeground(new java.awt.Color(0, 0, 255));
         productInfoBrand2.setText("Auf Lager:");
-
+        //product modell
         productInfoBrand3.setFont(new java.awt.Font("Tahoma", 0, 14));
         productInfoBrand3.setForeground(new java.awt.Color(0, 0, 255));
         productInfoBrand3.setText("Modell:");
-
+        //product description
         productInfoBrand4.setFont(new java.awt.Font("Tahoma", 0, 14));
         productInfoBrand4.setForeground(new java.awt.Color(0, 0, 255));
         productInfoBrand4.setText("Beschreibung:");
-
+        //add to cart button
         addToCart.setBackground(new java.awt.Color(0, 0, 255));
         addToCart.setFont(new java.awt.Font("Tahoma", 0, 18));
         addToCart.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +133,7 @@ public class ProductInformation extends JFrame {
                 addToCartActionPerformed(evt);
             }
         });
-
+        
         productInfoBrandName.setFont(new java.awt.Font("Tahoma", 1, 14));
         productInfoBrandName.setForeground(new java.awt.Color(0, 0, 255));
 
@@ -158,11 +156,11 @@ public class ProductInformation extends JFrame {
         productInfoFeature.setRequestFocusEnabled(false);
         productInfoFeature.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(productInfoFeature);
-        
+        //product qty
         productInfoBrand5.setFont(new java.awt.Font("Tahoma", 0, 18));
         productInfoBrand5.setForeground(new java.awt.Color(0, 0, 255));
         productInfoBrand5.setText("Anzahl:");
-
+        //no of added items
         productQtyField.setFont(new java.awt.Font("Tahoma", 0, 18));
         productQtyField.setText("1");
         productQtyField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -277,7 +275,7 @@ public class ProductInformation extends JFrame {
     
     
     private void addToCartActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        //add item to cart or show message in case not enough items in stock 
         if(Integer.parseInt(this.productInfoStock.getText())<Integer.parseInt(this.productQtyField.getText())){
             JOptionPane.showMessageDialog(null, "Nicht genug Ware auf Lager!");
         }
@@ -312,8 +310,6 @@ public class ProductInformation extends JFrame {
     	return(rab);
 	}
     
-    
-
 	private void productQtyFieldActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here
     }

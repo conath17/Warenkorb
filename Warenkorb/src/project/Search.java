@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 public class Search {
     
     static int kids = 0;
+    //query database and get product infos/update ProjectMain
     public static ArrayList<ProductList> mobileSearch(String model){
         ArrayList<ProductList> list = new ArrayList<>();
         try {

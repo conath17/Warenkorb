@@ -14,6 +14,7 @@ public class SignedIn extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
     public SignedIn() {
+    	//create new frame for sign in
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -22,7 +23,6 @@ public class SignedIn extends JFrame {
     /**
      * This method is called from within the constructor to initialize the form
      */
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();

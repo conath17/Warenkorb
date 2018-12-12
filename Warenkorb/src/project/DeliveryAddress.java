@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Void
+ * @author 
  */
 public class DeliveryAddress extends JFrame {
 
@@ -22,9 +22,8 @@ public class DeliveryAddress extends JFrame {
     }
 
     /**
-     * This method is called from within the constructor to initialize the form.
+     * This method is called from within the constructor to initialise the form.
      */
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
@@ -157,7 +156,8 @@ public class DeliveryAddress extends JFrame {
     }
 
     private void finalizeActionPerformed(java.awt.event.ActionEvent evt) {
-        this.dispose();
+        //
+    	this.dispose();
         DefaultTableModel dt = (DefaultTableModel) ProjectMain.cartItemTable.getModel();
         dt.setRowCount(0);
         ProjectMain.billLabel.setText("0");

@@ -11,12 +11,13 @@ package project;
  */
 public class BillObject {
 	
-	//Rechnung
+	//bill object
     private int id;
     private String uname;
     private int bill;
     private String date;
-
+    
+    
     public BillObject(int id, String uname, int bill, String date) {
         this.id = id;
         this.uname = uname;
@@ -24,7 +25,9 @@ public class BillObject {
         this.date = date;
     }
     
-    
+    /**
+     * getter and setter methods for bill
+     */
     public int getId() {
         return id;
     }

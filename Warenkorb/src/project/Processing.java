@@ -12,6 +12,7 @@ public class Processing extends JFrame {
 	private static final long serialVersionUID = 1L;
 	/**
      * Creates new form Processing
+     * shows a message after buy confirmation
      */
     public Processing() {
         initComponents();
@@ -19,7 +20,7 @@ public class Processing extends JFrame {
     }
 
     /**
-     * This method is called from within the constructor to initialize the form.
+     * This method is called from within the constructor to initialise the form.
      */
     private void initComponents() {
 
@@ -70,18 +71,18 @@ public class Processing extends JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Cargo_Ship_96px.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Cargo_Ship_96px.png")));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel7.setForeground(new java.awt.Color(0, 0, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Ware wird versendet.");
 
         LogInButton.setBackground(new java.awt.Color(0, 0, 255));
-        LogInButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LogInButton.setFont(new java.awt.Font("Tahoma", 0, 18));
         LogInButton.setForeground(new java.awt.Color(255, 255, 255));
-        LogInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Vote_24px_1.png"))); // NOI18N
+        LogInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Vote_24px_1.png")));
         LogInButton.setText("Ok");
         LogInButton.setBorder(null);
         LogInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
