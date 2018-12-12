@@ -283,7 +283,7 @@ public class ProductInformation extends JFrame {
         }
         else{
             int qty = Integer.parseInt(this.productQtyField.getText());
-            ProductList p = new ProductList(this.productInfoBrandName.getText(), this.productInfoModel.getText(), calcDiscount(productInfoModel.getText(), productInfoPrice.getText(), qty), 
+            ProductList p = new ProductList(this.productInfoBrandName.getText(), this.productInfoModel.getText(), calcDiscount(productInfoModel.getText(), Integer.parseInt(productInfoPrice.getText()), qty), 
                             	Integer.parseInt(this.productQtyField.getText()), null, null);//qty*Integer.parseInt(this.productInfoPrice.getText()
             
             cartItem.add(p);
@@ -296,38 +296,22 @@ public class ProductInformation extends JFrame {
     }
     
     //Berechne Preis mit Rabatt
-    private int calcDiscount(String mod, String price, int qty) {
+    private int calcDiscount(String mod, int price, int qty) {
     	
     	int rab = 0;
     	
     	if (mod.equals(rab1)) {
-    		rab = ((qty * Integer.parseInt(price)) - (((qty * Integer.parseInt(price)) * rab1Dis)/100));
+    		rab = ((qty * price) - (((qty * price) * rab1Dis)/100));
     	}
     	else if (mod.equals(rab2)) {
-    		rab = ((qty * Integer.parseInt(price)) - qty * rab2Dis);
+    		rab = ((qty * price) - qty * rab2Dis);
     	}
     	else{
-    		rab = Integer.parseInt(price) * qty;
+    		rab = price * qty;
     	}
-    	System.out.println(rab);
     	return(rab);
 	}
-    /**private int calcDiscount(String mod, String price, int qty) {
-    	
-    	double rab = 0;
-    	
-    	if (mod.equals(rab1)) {
-    		rab = (qty * (double)Integer.parseInt(price)) - (((qty * Integer.parseInt(price)) * rab1Dis)/100);
-    	}
-    	else if (mod.equals(rab2)) {
-    		rab = (qty * Integer.parseInt(price)) - qty * rab2Dis;
-    	}
-    	else{
-    		rab = Integer.parseInt(price) * qty;
-    	}
-    	System.out.println(rab);
-    	return(rab);
-	}*/
+    
     
 
 	private void productQtyFieldActionPerformed(java.awt.event.ActionEvent evt) {

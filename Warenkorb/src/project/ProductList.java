@@ -39,7 +39,7 @@ public class ProductList {
         this.model = model;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
