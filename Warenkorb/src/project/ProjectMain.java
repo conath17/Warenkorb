@@ -23,8 +23,6 @@ public class ProjectMain extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
 	static Object[] data = new Object[4];   
     static int total = 0;
-    //static String proDiscount = " (10% Rabatt)";
-    //static String absDiscount = " (5€ Rabatt)";
     static String tot = "";
     static boolean signInStatus = false;
     static int wrongPass = 0;
@@ -1018,7 +1016,7 @@ public class ProjectMain extends javax.swing.JFrame {
          DefaultTableModel model =  (DefaultTableModel) cartItemTable.getModel();
          model.setRowCount(0);
          total = 0;
-         //variable fuer Gesamt-Preis, wird in ProductInformation geupdated
+         //Variable fuer Gesamt-Preis, wird in ProductInformation geupdated
          tot = "";
          
          for(int i=0; i<ProductInformation.cartItem.size(); i++){
